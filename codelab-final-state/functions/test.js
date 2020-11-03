@@ -17,7 +17,7 @@ const path = require("path");
 const TEST_FIREBASE_PROJECT_ID = "test-firestore-rules-project";
 
 // TODO: Change this to your real Firebase Project ID
-const REAL_FIREBASE_PROJECT_ID = "example";
+const REAL_FIREBASE_PROJECT_ID = "edicon-firebase-dev";
 
 const firebase = require("@firebase/rules-unit-testing");
 
@@ -113,8 +113,8 @@ describe("shopping carts", () => {
 });
 
 describe("shopping cart items", async () => {
-  const admin = firebase.initializeAdminApp({ 
-    projectId: TEST_FIREBASE_PROJECT_ID 
+  const admin = firebase.initializeAdminApp({
+    projectId: TEST_FIREBASE_PROJECT_ID
   }).firestore();
 
   const aliceDb = firebase.initializeTestApp({
@@ -170,8 +170,8 @@ describe("shopping cart items", async () => {
 });
 
 describe("adding an item to the cart recalculates the cart total. ", () => {
-  const admin = firebase.initializeAdminApp({ 
-    projectId: REAL_FIREBASE_PROJECT_ID 
+  const admin = firebase.initializeAdminApp({
+    projectId: REAL_FIREBASE_PROJECT_ID
   }).firestore();
 
   after(async () => {
@@ -205,7 +205,7 @@ describe("adding an item to the cart recalculates the cart total. ", () => {
         // If the function worked, these will be cart's final attributes.
         const expectedCount = 2;
         const expectedTotal = 9.98;
-  
+
         // When the `itemCount`and `totalPrice` match the expectations for the
         // two items added, the promise resolves, and the test passes.
         if (snap.exists && snap.data().itemCount === expectedCount && snap.data().totalPrice === expectedTotal) {
@@ -220,7 +220,7 @@ describe("adding an item to the cart recalculates the cart total. ", () => {
 
 /**
  * Clear all test data.
- * @param {firebase.firestore.Firestore} db 
+ * @param {firebase.firestore.Firestore} db
  */
 async function clearCartsAndCartItems(db) {
   // Note: normally we could call "firebase.clearFirestoreData()" from the testing library but
